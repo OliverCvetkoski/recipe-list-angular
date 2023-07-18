@@ -1,0 +1,14 @@
+<a href="#" class="list-group-item clearfix" (click)="onSelected()">
+    <div class="pull-left">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-start hover">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{recipe.name}}</div>
+                    <p>{{recipe.description}}</p>
+                </div>
+                <span> <img [src]="recipe.imagePath" alt="{{recipe.name}}" class="img-responsive"
+                        style="max-height:50px;"></span>
+            </li>
+        </ul>
+    </div>
+</a>
