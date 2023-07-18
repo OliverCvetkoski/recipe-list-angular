@@ -2,3 +2,8 @@
     background-color: rgb(203, 203, 213);
     border: 1px solid black;
 }
+
+.active {
+    background-color: rgb(203, 203, 213);
+    color: black;
+}

@@ -1,7 +1,8 @@
-<a href="#" class="list-group-item clearfix" (click)="onSelected()">
+<a style="cursor: pointer;" [routerLink]="[index]" class="list-group-item clearfix">
     <div class="pull-left">
         <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-start hover">
+            <li class="list-group-item d-flex justify-content-between align-items-start hover"
+                routerLinkActive="active">
                 <div class="ms-2 me-auto">
                     <div class="fw-bold">{{recipe.name}}</div>
                     <p>{{recipe.description}}</p>

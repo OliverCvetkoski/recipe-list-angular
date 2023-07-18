@@ -11,3 +11,7 @@
     padding-left: 10px;
     padding-top: 15px;
 }
+
+.active {
+    background-color: rgb(203, 203, 213);
+}
