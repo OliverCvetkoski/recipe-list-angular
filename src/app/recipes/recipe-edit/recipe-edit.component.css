@@ -1,0 +1,13 @@
+input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-right: 10px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+    border: 2px solid red
+}
