@@ -10,16 +10,17 @@ import { Subject } from "rxjs";
 export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
 
-
-    private recipes: Recipe[] = [
-        new Recipe('Test', 'this is a test', 'https://assets.bonappetit.com/photos/64349ba03fd52da4745a35f4/1:1/w_1920,c_limit/04102023-ratatouille-lede.jpg', [new Ingredient('Meat', 1)]),
-        new Recipe('Test 2', 'this is a test', 'https://assets.bonappetit.com/photos/64349ba03fd52da4745a35f4/1:1/w_1920,c_limit/04102023-ratatouille-lede.jpg', [new Ingredient('French fries', 10), new Ingredient('Buns', 2)])
-    ];
+    private recipes: Recipe[];
 
     constructor(private slService: ShoppingListService) { }
 
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
     getRecipes() {
-        return this.recipes.slice()
+        return this.recipes
     }
 
     getRecipe(index: number) {
