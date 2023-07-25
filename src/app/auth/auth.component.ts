@@ -10,7 +10,7 @@ import { AuthService } from "./auth.service";
 export class AuthComponent {
     isLoginMode = true;
     isLoading = false;
-    errorMsg: string = null;
+    error: string = null;
 
     constructor(private authService: AuthService) { }
 
@@ -27,17 +27,20 @@ export class AuthComponent {
 
         this.isLoading = true;
 
-        if (this.isLoginMode) { } else {
-            this.authService.signup(email, password).subscribe(resData => {
-                console.log(resData);
-                this.isLoading = false;
-            }), errorRes => {
-                console.log(errorRes)
-                this.errorMsg = 'An Error occurred!'
-                this.isLoading = false;
-            };
+        if (this.isLoginMode) {
+
+        } else {
+            this.authService.signup(email, password).subscribe(
+                (resData) => {
+                    console.log(resData);
+                    this.isLoading = false;
+                },
+                errorMsg => {
+                    this.error = errorMsg
+                    this.isLoading = false;
+                }
+            );
         }
         form.reset();
-
     }
 }

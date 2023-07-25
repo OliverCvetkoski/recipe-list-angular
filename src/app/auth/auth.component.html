@@ -1,7 +1,7 @@
 <div>
     <div>
-        <div class="alert alert-danger" *ngIf="errorMsg">
-            <p>{{ errorMsg }}</p>
+        <div class="alert alert-danger" *ngIf="error">
+            <p style="text-align: center; font-weight: 600;">{{ error }}</p>
         </div>
         <div *ngIf="isLoading" style="text-align: center;">
             <app-loading-spinner></app-loading-spinner>
