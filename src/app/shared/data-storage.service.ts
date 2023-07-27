@@ -18,20 +18,13 @@ export class DataStorageService {
     }
 
     fetchRecipes() {
-        return this.authService.user.pipe(take(1), exhaustMap(user => {
-            return this.http.get<Recipe[]>('https://recipe-book-205dc-default-rtdb.europe-west1.firebasedatabase.app/recipes.json',
-                {
-                    params: new HttpParams().set('auth', user.token)
+        return this.http.get<Recipe[]>('https://recipe-book-205dc-default-rtdb.europe-west1.firebasedatabase.app/recipes.json',)
+            .pipe(map(recipes => {
+                return recipes.map(recipe => {
+                    return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients : [] };
                 })
-        }), map(recipes => {
-            return recipes.map(recipe => {
-                return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients : [] };
-            })
-        }), tap(recipes => {
-            this.recipeService.setRecipes(recipes);
-        }))
+            }), tap(recipes => {
+                this.recipeService.setRecipes(recipes);
+            }))
     };
-
-
-
 }
