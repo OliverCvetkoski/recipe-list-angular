@@ -20,6 +20,7 @@ export interface AuthResposeData {
 export class AuthService {
   user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
+  isLoggedIn = false;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -94,6 +95,7 @@ export class AuthService {
       clearTimeout(this.tokenExpirationTimer);
     }
     this.tokenExpirationTimer = null;
+    this.isLoggedIn = false;
   }
 
   autoLogout(expirationDuration: number) {
@@ -113,6 +115,7 @@ export class AuthService {
     this.user.next(user);
     this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(user));
+    this.isLoggedIn = true;
   }
 
   private handleError(errorRes: HttpErrorResponse) {

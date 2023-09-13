@@ -15,6 +15,7 @@ const appRoutes: Routes = [
   {
     path: 'recipes',
     component: RecipesComponent,
+    resolve: [RecipesResolverService],
     canActivate: [AuthGuard],
     children: [
       { path: '', component: RecipeStartComponent },
