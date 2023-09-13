@@ -16,9 +16,7 @@ export class DataStorageService {
         'https://recipe-book-205dc-default-rtdb.europe-west1.firebasedatabase.app/recipes.json',
         recipes
       )
-      .subscribe((response) => {
-        console.log(response);
-      });
+      .subscribe((response) => {});
   }
 
   fetchRecipes() {
