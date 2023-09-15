@@ -26,12 +26,14 @@ export class DataStorageService {
       )
       .pipe(
         map((recipes) => {
-          return recipes.map((recipe) => {
-            return {
+          if (recipes && Array.isArray(recipes)) {
+            return recipes.map((recipe) => ({
               ...recipe,
               ingredients: recipe.ingredients ? recipe.ingredients : [],
-            };
-          });
+            }));
+          } else {
+            return [];
+          }
         }),
         tap((recipes) => {
           this.recipeService.setRecipes(recipes);
